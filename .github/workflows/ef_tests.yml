@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: read-all
+
+jobs:
+  some-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: do ls
+        run: ls
